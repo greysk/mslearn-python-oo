@@ -29,18 +29,18 @@ class GameRound:
         ]
         p1.choose()
         p2.choose()
+        self.awardPoints(p1, p2)
+
+    def compareChoices(self, p1, p2):
+        return self.rules[p1.toNumericalChoice()][p2.toNumericalChoice()]
+
+    def awardPoints(self, p1, p2):
         result = self.compareChoices(p1, p2)
         print(f"Round resulted in a {self.getResultAsString(result)}")
         if result > 0:
             p1.incrementPoint()
         elif result < 0:
             p2.incrementPoint()
-
-    def compareChoices(self, p1, p2):
-        return self.rules[p1.toNumericalChoice()][p2.toNumericalChoice()]
-
-    def awardPoints(self):
-        print("implement")
 
     def getResultAsString(self, result):
         res = {
